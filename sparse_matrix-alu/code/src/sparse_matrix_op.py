@@ -112,8 +112,8 @@ def main():
     print("3. Multiplication")
     choice = input("Enter your choice (1/2/3): ")
 
-    file1 = input("Enter first matrix file name (e.g., matrix1.txt): ")
-    file2 = input("Enter second matrix file name (e.g., matrix2.txt): ")
+    file1 = input("Enter first matrix file name (e.g: easy_sample_03_1.txt): ")
+    file2 = input("Enter second matrix file name (e.g: easy_sample_03_2.txt): ")
     path1 = os.path.join(base_path, file1)
     path2 = os.path.join(base_path, file2)
 
@@ -126,7 +126,7 @@ def main():
         elif choice == '2':
             result = matrix1 - matrix2
         elif choice == '3':
-            result = matrix1 @ matrix2
+            result = matrix1 * matrix2
         else:
             print("Invalid choice.")
             return
