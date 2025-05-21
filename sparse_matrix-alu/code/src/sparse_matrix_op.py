@@ -114,7 +114,8 @@ def main():
     choice = input("Enter your choice (1/2/3/4): ")
     if choice not in ['1', '2', '3', '4']:
         print("Invalid choice.")
-        elif choice == '4':
+        return
+    elif choice == '4':
         print("Exiting...")
         return
 
