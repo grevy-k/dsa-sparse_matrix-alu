@@ -110,7 +110,8 @@ def main():
     print("1. Addition")
     print("2. Subtraction")
     print("3. Multiplication")
-    choice = input("Enter your choice (1/2/3): ")
+    print("4. Exit")
+    choice = input("Enter your choice (1/2/3/4): ")
 
     file1 = input("Enter first matrix file name (e.g: easy_sample_03_1.txt): ")
     file2 = input("Enter second matrix file name (e.g: easy_sample_03_2.txt): ")
@@ -127,6 +128,9 @@ def main():
             result = matrix1 - matrix2
         elif choice == '3':
             result = matrix1 * matrix2
+        elif choice == '4':
+            print("Exiting...")
+            return
         else:
             print("Invalid choice.")
             return
