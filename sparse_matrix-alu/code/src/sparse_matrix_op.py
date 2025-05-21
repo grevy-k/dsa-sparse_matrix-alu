@@ -112,6 +112,11 @@ def main():
     print("3. Multiplication")
     print("4. Exit")
     choice = input("Enter your choice (1/2/3/4): ")
+    if choice not in ['1', '2', '3', '4']:
+        print("Invalid choice.")
+        elif choice == '4':
+        print("Exiting...")
+        return
 
     file1 = input("Enter first matrix file name (e.g: easy_sample_03_1.txt): ")
     file2 = input("Enter second matrix file name (e.g: easy_sample_03_2.txt): ")
@@ -128,9 +133,6 @@ def main():
             result = matrix1 - matrix2
         elif choice == '3':
             result = matrix1 * matrix2
-        elif choice == '4':
-            print("Exiting...")
-            return
         else:
             print("Invalid choice.")
             return
