@@ -30,27 +30,20 @@ class SparseMatrix:
             raise ValueError("Input file has wrong format")
         return int(r), int(c), int(v)
 
-def _load_from_file(self, filepath):
-    try:
-        with open(filepath, 'r') as f:
-            lines = f.readlines()
-
-        lines = [self._strip_whitespace(line) for line in lines if line.strip()]
-        
-        if len(lines) < 2:
-            raise ValueError("Input file does not contain enough lines (needs at least rows and cols)")
-        
-        if not lines[0].startswith('rows=') or not lines[1].startswith('cols='):
-            raise ValueError("Input file has wrong format")
-
-        self.rows = int(lines[0][5:])
-        self.cols = int(lines[1][5:])
-        for line in lines[2:]:
-            r, c, v = self._parse_entry(line)
-            self.set_element(r, c, v)
-    except Exception as e:
-        raise ValueError(str(e))
-
+    def _load_from_file(self, filepath):
+        try:
+            with open(filepath, 'r') as f:
+                lines = f.readlines()
+            lines = [self._strip_whitespace(line) for line in lines if line.strip()]
+            if not lines[0].startswith('rows=') or not lines[1].startswith('cols='):
+                raise ValueError("Input file has wrong format")
+            self.rows = int(lines[0][5:])
+            self.cols = int(lines[1][5:])
+            for line in lines[2:]:
+                r, c, v = self._parse_entry(line)
+                self.set_element(r, c, v)
+        except Exception as e:
+            raise ValueError(str(e))
 
     def set_element(self, row, col, value):
         if not (0 <= row < self.rows and 0 <= col < self.cols):
