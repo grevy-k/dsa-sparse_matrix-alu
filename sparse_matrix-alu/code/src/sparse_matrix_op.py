@@ -4,7 +4,7 @@ class SparseMatrix:
     def __init__(self, filepath=None, rows=0, cols=0):
         self.rows = rows
         self.cols = cols
-        self.elements = {}  # stores non-zero elements as (row, col): value
+        self.elements = {}  
         if filepath:
             self._load_from_file(filepath)
 
@@ -17,7 +17,7 @@ class SparseMatrix:
     def _parse_entry(self, line):
         if not line.startswith('(') or not line.endswith(')'):
             raise ValueError("Each entry must be enclosed in parentheses.")
-        line = line[1:-1]  # remove parentheses
+        line = line[1:-1]  
         parts = line.split(',')
         if len(parts) != 3:
             raise ValueError("Each entry must have exactly three parts: row, col, value")
@@ -118,8 +118,8 @@ def main():
         print("Exiting...")
         return
 
-    file1 = input("Enter first matrix file name (e.g: easy_sample_03_1.txt): ")
-    file2 = input("Enter second matrix file name (e.g: easy_sample_03_2.txt): ")
+    file1 = input("Enter first matrix file name (e.g: easy_sample_03_4.txt): ")
+    file2 = input("Enter second matrix file name (e.g: easy_sample_03_5.txt): ")
     path1 = os.path.join(base_path, file1)
     path2 = os.path.join(base_path, file2)
 
@@ -132,7 +132,7 @@ def main():
         elif choice == '2':
             result = matrix1 - matrix2
         elif choice == '3':
-            result = matrix1 @ matrix2
+            result = matrix1 * matrix2
         else:
             print("Invalid choice.")
             return
@@ -140,9 +140,9 @@ def main():
         result_filename = f"result_{file1.split('.')[0]}_{file2.split('.')[0]}.txt"
         result_path = os.path.join(base_path, result_filename)
         result.save_to_file(result_path)
-        print(f"\n Operation successful. Result saved to: {result_path}")
+        print(f"\nOperation successful. Result saved to: {result_path}")
 
-        print("\n Result matrix:")
+        print("\nResult matrix:")
         result.print_matrix()
 
     except Exception as e:
