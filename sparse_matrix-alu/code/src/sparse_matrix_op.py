@@ -105,7 +105,7 @@ class SparseMatrix:
                 f.write(f"({r}, {c}, {v})\n")
 
 def main():
-    base_path = "/dsa-sparse_matrix-alu/sparse_matrix-alu/sample_inputs/"
+    base_path = "dsa-sparse_matrix-alu/sparse_matrix-alu/sample_inputs/"
     print("Sparse Matrix Operation Menu")
     print("1. Addition")
     print("2. Subtraction")
