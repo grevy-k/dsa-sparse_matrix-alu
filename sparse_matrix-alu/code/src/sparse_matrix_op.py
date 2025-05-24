@@ -132,7 +132,7 @@ def main():
         elif choice == '2':
             result = matrix1 - matrix2
         elif choice == '3':
-            result = matrix1 * matrix2
+            result = matrix1 @ matrix2
         else:
             print("Invalid choice.")
             return
