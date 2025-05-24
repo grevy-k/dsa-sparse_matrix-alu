@@ -13,8 +13,10 @@ class SparseMatrix:
 
     def _is_valid_integer(self, s):
         return s.lstrip('-').isdigit()
+    # This method checks if a string represents a valid integer, allowing for negative integers.
 
     def _parse_entry(self, line):
+        # This method parses a line representing a matrix entry.
         if not line.startswith('(') or not line.endswith(')'):
             raise ValueError("Each entry must be enclosed in parentheses.")
         line = line[1:-1]  
@@ -29,6 +31,7 @@ class SparseMatrix:
         return int(r), int(c), int(v)
 
     def _load_from_file(self, filepath):
+        # This method loads a sparse matrix from a file.
         try:
             with open(filepath, 'r') as f:
                 lines = [self._strip_whitespace(line) for line in f if line.strip()]
@@ -45,6 +48,7 @@ class SparseMatrix:
             raise ValueError(f"Error loading matrix from file {filepath}: {e}")
 
     def set_element(self, row, col, value):
+        # This method sets an element in the sparse matrix.
         if not (0 <= row < self.rows and 0 <= col < self.cols):
             raise IndexError(f"Invalid index ({row}, {col}) for matrix size {self.rows}x{self.cols}")
         if value != 0:
@@ -67,6 +71,7 @@ class SparseMatrix:
         return result
 
     def __sub__(self, other):
+        # It raises an error if the dimensions do not match.
         if self.rows != other.rows or self.cols != other.cols:
             raise ValueError("Matrix dimensions do not match for subtraction")
         result = SparseMatrix(rows=self.rows, cols=self.cols)
@@ -78,6 +83,7 @@ class SparseMatrix:
         return result
 
     def __matmul__(self, other):
+        # It raises an error if the number of columns in the first matrix does not match the number of rows in the second matrix.
         if self.cols != other.rows:
             raise ValueError("Matrix dimensions do not match for multiplication")
         result = SparseMatrix(rows=self.rows, cols=other.cols)
@@ -90,6 +96,7 @@ class SparseMatrix:
         return result
 
     def print_matrix(self):
+        # This method prints the sparse matrix in a readable format.
         for r in range(self.rows):
             for c in range(self.cols):
                 print(self.get_element(r, c), end=' ')
@@ -104,6 +111,7 @@ class SparseMatrix:
 
 
 def main():
+    # Ensure the base path is correct for your environment
     base_path = "/dsa-sparse_matrix-alu/sparse_matrix-alu/sample_inputs/"
     print("Sparse Matrix Operation Menu")
     print("1. Addition")
@@ -151,4 +159,5 @@ def main():
 
 
 if __name__ == "__main__":
+    # This ensures that the main function is called when the script is run directly.
     main()
