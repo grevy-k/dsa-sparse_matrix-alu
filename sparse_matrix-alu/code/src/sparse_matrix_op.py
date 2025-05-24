@@ -110,24 +110,23 @@ def main():
     print("2. Subtraction")
     print("3. Multiplication")
     print("4. Exit")
-    choice = input("Enter your choice (1/2/3/4): ").strip()
-
-    if choice not in {'1', '2', '3', '4'}:
+    choice = input("Enter your choice (1/2/3/4): ")
+    if choice not in ['1', '2', '3', '4']:
         print("Invalid choice.")
         return
-    if choice == '4':
+    elif choice == '4':
         print("Exiting...")
         return
 
-    file1 = input("Enter first matrix file name (e.g: easy_sample_03_1.txt): ").strip()
-    file2 = input("Enter second matrix file name (e.g: easy_sample_03_2.txt): ").strip()
+    file1 = input("Enter first matrix file name (e.g: easy_sample_03_1.txt): ")
+    file2 = input("Enter second matrix file name (e.g: easy_sample_03_2.txt): ")
     path1 = os.path.join(base_path, file1)
     path2 = os.path.join(base_path, file2)
 
     try:
         matrix1 = SparseMatrix(filepath=path1)
         matrix2 = SparseMatrix(filepath=path2)
-
+        result = None
         if choice == '1':
             result = matrix1 + matrix2
         elif choice == '2':
@@ -135,15 +134,20 @@ def main():
         elif choice == '3':
             result = matrix1 @ matrix2
         else:
-            raise ValueError("Unexpected operation")
+            print("Invalid choice.")
+            return
 
         result_filename = f"result_{file1.split('.')[0]}_{file2.split('.')[0]}.txt"
         result_path = os.path.join(base_path, result_filename)
         result.save_to_file(result_path)
-        print(f"Operation successful. Result saved to {result_path}")
+        print(f"\n Operation successful. Result saved to: {result_path}")
+
+        print("\n Result matrix:")
+        result.print_matrix()
 
     except Exception as e:
-        print(f"Error: {e}")
+        print(f" Error: {e}")
+
 
 
 if __name__ == "__main__":
