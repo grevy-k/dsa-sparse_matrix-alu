@@ -118,8 +118,8 @@ def main():
         print("Exiting...")
         return
 
-    file1 = input("Enter first matrix file name (e.g: easy_sample_03_4.txt): ")
-    file2 = input("Enter second matrix file name (e.g: easy_sample_03_5.txt): ")
+    file1 = input("Enter first matrix file name (e.g: matrixfile112.txt): ")
+    file2 = input("Enter second matrix file name (e.g: matrixfile2.txt): ")
     path1 = os.path.join(base_path, file1)
     path2 = os.path.join(base_path, file2)
 
